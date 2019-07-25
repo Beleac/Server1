@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
-
-mongoose.connect('');
+const connectionString = 'mongodb+srv://Caeleb:ucode@dsdb-cqivl.mongodb.net/test?retryWrites=true&w=majority'
+mongoose.connect(connectionString, {useNewUrlParser : true, useFindAndModify: false})
+    .then(() => {
+        console.log('Successully connected to MonogoDB Atlas!')
+    })
+    .catch((error) => {
+        console.log(`Unable to connect to MongoDB Atlas!`)
+        console.log(error);
+    })
 
 module.exports = mongoose;
 

@@ -1,7 +1,7 @@
 const 
     express = require("express"),
     app = express(),
-    quotes = require('./db/mongoose'),
+    mongoose = require('./db/mongoose'),
     port = 8000;
 
 
