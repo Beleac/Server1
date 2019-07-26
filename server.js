@@ -30,13 +30,44 @@ const
          person.save();
 
     res.status(200).send(person)
-    //    var person = new Person({
-    //     name: 'Zeeshan A',
-    //     age: 13,
-    //     isFun: true
-    //     });
     });
 
+    app.patch('/person/:id', async (req, res) => {
+       console.log(req.params.id); 
+
+        await Person.findOneAndUpdate({_id: req.params.id},   
+            {
+                name: req.body.name,
+                age: req.body.age,
+                isFun: req.body.isFun
+            });
+
+       res.status(200).send(`Updated: ${req.params.id}, name: ${req.body.name} age: ${req.body.age} isFun: ${req.body.isFun}`);
+    });
+
+    app.delete('/person/:id', async (req, res) => {
+        console.log(`Deleting ${req.params.id}`);
+
+        await Person.findOneAndDelete({_id: req.params.id});
+
+        res.status(200).send(`Deleted: ${req.params.id}`)
+    });
+
+    app.get('/person',async (req, res) => {
+        console.log('Finding people in database.');
+
+        const results = await Person.find({});
+
+        res.status(200).send(results);
+    });
+
+    app.get('/person/:id',async (req, res) => {
+        console.log(`Finding ${req.params.id}.`);
+
+        const results = await Person.find({_id: req.params.id});
+
+        res.status(200).send(results);
+    });
     // var id = 7;
 
     //ROUTES
