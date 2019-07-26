@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const connectionString = 'mongodb+srv://Caeleb:ucode@dsdb-cqivl.mongodb.net/test?retryWrites=true&w=majority'
+const connectionString = 'mongodb+srv://Caeleb:beleac05@dsdb-cqivl.mongodb.net/test?retryWrites=true&w=majority'
 mongoose.connect(connectionString, {useNewUrlParser : true, useFindAndModify: false})
     .then(() => {
         console.log('Successully connected to MonogoDB Atlas!')
